@@ -2,7 +2,7 @@ fn main() {
     // -- Part 1 --
 
     // read data file
-    let contents = std::fs::read_to_string("data/depth_readings.txt")
+    let contents = std::fs::read_to_string("../data/depth_readings.txt")
         .expect("Unable to open data file");
 
     // convert to vec<int>

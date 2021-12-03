@@ -7,9 +7,8 @@ fn main() {
     // (horizontal_offset, depth)
     let position: (i32, i32) = inputs
         .split('\n')
-        .fold((0, 0), |acc, input| {
-            let input = String::from(input);
-            let mut split = input.split_whitespace();
+        .map(|line| {
+            let mut split = line.split_whitespace();
             let direction = split
                 .next()
                 .unwrap();
@@ -19,10 +18,13 @@ fn main() {
                 .parse::<i32>()
                 .unwrap();
 
-            match &direction[..] {
-                "forward" => (acc.0 + distance, acc.1),
-                "down" => (acc.0, acc.1 + distance),
-                "up" => (acc.0, acc.1 - distance),
+            (direction, distance)
+        })
+        .fold((0, 0), |acc, input| {
+            match &input.0[..] {
+                "forward" => (acc.0 + input.1, acc.1),
+                "down" => (acc.0, acc.1 + input.1),
+                "up" => (acc.0, acc.1 - input.1),
                 _ => acc,
             }
         });
@@ -32,9 +34,8 @@ fn main() {
     // (horizontal_offset, depth, aim)
     let position_with_aim: (i32, i32, i32) = inputs
         .split('\n')
-        .fold((0, 0, 0), |acc, input| {
-            let input = String::from(input);
-            let mut split = input.split_whitespace();
+        .map(|line| {
+            let mut split = line.split_whitespace();
             let direction = split
                 .next()
                 .unwrap();
@@ -44,10 +45,14 @@ fn main() {
                 .parse::<i32>()
                 .unwrap();
 
-            match &direction[..] {
-                "forward" => (acc.0 + distance, acc.1 + (acc.2 * distance), acc.2),
-                "down" => (acc.0, acc.1, acc.2 + distance),
-                "up" => (acc.0, acc.1, acc.2 - distance),
+            (direction, distance)
+        })
+        .fold((0, 0, 0), |acc, input| {
+
+            match &input.0[..] {
+                "forward" => (acc.0 + input.1, acc.1 + (acc.2 * input.1), acc.2),
+                "down" => (acc.0, acc.1, acc.2 + input.1),
+                "up" => (acc.0, acc.1, acc.2 - input.1),
                 _ => acc,
             }
         });

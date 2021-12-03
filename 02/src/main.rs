@@ -9,14 +9,16 @@ fn main() {
         .split('\n')
         .map(|line| {
             let mut split = line.split_whitespace();
-            let direction = split
-                .next()
-                .unwrap();
-            let distance = split
-                .next()
-                .unwrap()
-                .parse::<i32>()
-                .unwrap();
+            let direction = match split.next() {
+                Some(val) => val,
+                None => "",
+            };
+            let distance = match split.next() {
+                Some(val) => val
+                    .parse::<i32>()
+                    .unwrap(),
+                None => 0,
+            };
 
             (direction, distance)
         })
@@ -36,14 +38,16 @@ fn main() {
         .split('\n')
         .map(|line| {
             let mut split = line.split_whitespace();
-            let direction = split
-                .next()
-                .unwrap();
-            let distance = split
-                .next()
-                .unwrap()
-                .parse::<i32>()
-                .unwrap();
+            let direction = match split.next() {
+                Some(val) => val,
+                None => "",
+            };
+            let distance = match split.next() {
+                Some(val) => val
+                    .parse::<i32>()
+                    .unwrap(),
+                None => 0,
+            };
 
             (direction, distance)
         })

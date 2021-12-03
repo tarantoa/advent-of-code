@@ -11,14 +11,14 @@ fn main() {
     let gamma = codes
         .iter()
         .fold(vec![0; code_length], |freqs, &code| {
-            freqs // count up for 1s at each index, down for 0s
+            freqs 
                 .iter()
-                .zip(
+                .zip( // convert char to i32
                     String::from(code)
                         .chars()
                         .map(|c| c.to_digit(10).unwrap())
                 )
-                .map(|(&freq, c)| {
+                .map(|(&freq, c)| { // count up for 1s at each index, down for 0s
                     if c == 1 { freq + 1 } else { freq - 1 }
                 })
                 .collect::<Vec<i32>>()
@@ -27,10 +27,10 @@ fn main() {
         .map(|&x| { // map to binary value
             if x > 0 { '1' } else { '0' }
         })
-        .collect::<String>();
-    let epsilon = gamma // flip bit values
+        .collect::<String>(); // aggregate to string
+    let epsilon = gamma 
         .chars()
-        .map(|c| {
+        .map(|c| { // flip bit values
             if c == '1' { '0' } else { '1' }
         })
         .collect::<String>();
@@ -46,4 +46,6 @@ fn main() {
         epsilon_value,
         gamma_value * epsilon_value
     );
+
+    // -- Part 2 --
 }

@@ -1,13 +1,16 @@
 fn main() {
     // open code file
     let codes = std::fs::read_to_string("../data/gamma_readings.txt")
-        .expect("Failed to open data file");
+        .unwrap();
+    let codes = codes
+        .split('\n')
+        .collect::<Vec<&str>>();
 
     // -- Part 1 --
     let code_length = 12;
     let gamma = codes
-        .split('\n')
-        .fold(vec![0; code_length], |freqs, code| {
+        .iter()
+        .fold(vec![0; code_length], |freqs, &code| {
             freqs
                 .iter()
                 .zip(

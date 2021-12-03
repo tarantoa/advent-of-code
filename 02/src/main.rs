@@ -48,7 +48,6 @@ fn main() {
             (direction, distance)
         })
         .fold((0, 0, 0), |acc, input| {
-
             match &input.0[..] {
                 "forward" => (acc.0 + input.1, acc.1 + (acc.2 * input.1), acc.2),
                 "down" => (acc.0, acc.1, acc.2 + input.1),

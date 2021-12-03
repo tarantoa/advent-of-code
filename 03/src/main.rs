@@ -1,5 +1,5 @@
 fn main() {
-    // open code file
+    // open codes file
     let codes = std::fs::read_to_string("../data/gamma_readings.txt")
         .unwrap();
     let codes = codes
@@ -11,7 +11,7 @@ fn main() {
     let gamma = codes
         .iter()
         .fold(vec![0; code_length], |freqs, &code| {
-            freqs
+            freqs // count up for 1s at each index, down for 0s
                 .iter()
                 .zip(
                     String::from(code)
@@ -24,23 +24,20 @@ fn main() {
                 .collect::<Vec<i32>>()
         })
         .iter()
-        .map(|&x| {
+        .map(|&x| { // map to binary value
             if x > 0 { '1' } else { '0' }
         })
-        .collect::<Vec<char>>();
-
-    let epsilon = gamma
-        .iter()
-        .map(|&x| {
-            if x == '1' { '0' } else { '1' }
+        .collect::<String>();
+    let epsilon = gamma // flip bit values
+        .chars()
+        .map(|c| {
+            if c == '1' { '0' } else { '1' }
         })
-        .collect::<Vec<char>>();
+        .collect::<String>();
 
-    let gamma_value = gamma.into_iter().collect::<String>();
-    let gamma_value = isize::from_str_radix(&gamma_value[..], 2)
+    let gamma_value = isize::from_str_radix(&gamma[..], 2)
         .unwrap();
-    let epsilon_value = epsilon.into_iter().collect::<String>();
-    let epsilon_value = isize::from_str_radix(&epsilon_value[..], 2)
+    let epsilon_value = isize::from_str_radix(&epsilon[..], 2)
         .unwrap();
 
     println!(

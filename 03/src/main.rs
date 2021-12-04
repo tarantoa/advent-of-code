@@ -1,6 +1,6 @@
 fn main() {
     // open codes file
-    let codes = std::fs::read_to_string("../data/gamma_readings.txt").unwrap();
+    let codes = std::fs::read_to_string("../data/day_03.txt").unwrap();
     let codes = codes.split('\n').collect::<Vec<&str>>();
     let code_length = 12;
 
@@ -55,6 +55,9 @@ fn main() {
         if current_codes.len() > 1 {
             let (zeroes, ones) = find_index_bit_freq(&current_codes, idx);
             let most_frequent = if ones >= zeroes { '1' } else { '0' };
+
+            println!("{}", most_frequent);
+            println!("{:?}", current_codes);
 
             current_codes = filter_codes(current_codes, most_frequent, idx);
         } else {

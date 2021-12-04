@@ -1,6 +1,6 @@
 fn main() {
     // Read input file
-    let inputs = std::fs::read_to_string("../data/movement_inputs.txt")
+    let inputs = std::fs::read_to_string("../data/day_02.txt")
         .expect("Failed to open input file");
 
     // -- Part 1 --

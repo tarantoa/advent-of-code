@@ -56,9 +56,6 @@ fn main() {
             let (zeroes, ones) = find_index_bit_freq(&current_codes, idx);
             let most_frequent = if ones >= zeroes { '1' } else { '0' };
 
-            println!("{}", most_frequent);
-            println!("{:?}", current_codes);
-
             current_codes = filter_codes(current_codes, most_frequent, idx);
         } else {
             break;
@@ -70,7 +67,7 @@ fn main() {
     for idx in 0..code_length {
         if current_codes.len() > 1 {
             let (zeroes, ones) = find_index_bit_freq(&current_codes, idx);
-            let most_frequent = if zeroes >= ones { '0' } else { '1' };
+            let most_frequent = if ones >= zeroes { '0' } else { '1' };
 
             current_codes = filter_codes(current_codes, most_frequent, idx);
         } else {

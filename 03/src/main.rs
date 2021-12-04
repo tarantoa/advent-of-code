@@ -14,29 +14,16 @@ fn main() {
                     .chars()
                     .map(|c| c.to_digit(10).unwrap()),
             )
-            .map(|(&freq, c)| if c == 1 { freq + 1 } else { freq - 1 }
-            )
+            .map(|(&freq, c)| if c == 1 { freq + 1 } else { freq - 1 })
             .collect::<Vec<i32>>()
     });
     let gamma = all_bit_freqs
         .iter()
-        .map(|&x| {
-            if x > 0 {
-                '1'
-            } else {
-                '0'
-            }
-        })
-        .collect::<String>(); 
+        .map(|&x| if x > 0 { '1' } else { '0' })
+        .collect::<String>();
     let epsilon = gamma
         .chars()
-        .map(|c| {
-            if c == '1' {
-                '0'
-            } else {
-                '1'
-            }
-        })
+        .map(|c| if c == '1' { '0' } else { '1' })
         .collect::<String>();
 
     let gamma_value = isize::from_str_radix(&gamma[..], 2).unwrap();
@@ -76,7 +63,12 @@ fn main() {
     }
     let c_02 = convert_singleton_to_decimal(current_codes);
 
-    println!("oxygen = {}, c_02 = {}, Life support: {}", oxygen, c_02, oxygen * c_02);
+    println!(
+        "oxygen = {}, c_02 = {}, Life support: {}",
+        oxygen,
+        c_02,
+        oxygen * c_02
+    );
 }
 
 fn find_index_bit_freq(codes: &Vec<&str>, position: usize) -> (i32, i32) {

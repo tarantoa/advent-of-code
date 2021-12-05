@@ -5,6 +5,7 @@ use std::collections::HashSet;
 struct Card {
     lines: Vec<Vec<i32>>,
     marked: HashSet<i32>,
+    has_won: bool,
 }
 
 impl Card {
@@ -23,7 +24,6 @@ impl Card {
 }
 
 fn main() {
-    // -- Part 1 --
     let contents = std::fs::read_to_string("../data/day_04.txt")
         .expect("Failed to load data file");
     let mut current_line = contents.split('\n');
@@ -48,6 +48,7 @@ fn main() {
                     cards.push(Card {
                         lines: buffer.to_vec(),
                         marked: std::collections::HashSet::new(),
+                        has_won: false,
                     });
                     buffer.clear();
                 }
@@ -61,8 +62,9 @@ fn main() {
         .map(|val| i32::from_str(val.trim()).unwrap())
         .collect::<Vec<i32>>();
     
+    // -- Part 1 --
     let mut idx = 0;
-    let mut winning_card: Option<&Card>= None;
+    let mut winning_card: Option<&Card> = None;
     let num_cards = cards.len();
     while idx < called_numbers.len() && winning_card.is_none() {
         for card_idx in 0..num_cards {
@@ -82,8 +84,40 @@ fn main() {
         }
         idx += 1;
     }
+    println!("first winning card score = {}", winning_card.unwrap().get_score() * called_numbers[idx - 1] as i32);
 
-    println!("score = {}", winning_card.unwrap().get_score() * called_numbers[idx - 1] as i32);
+    // -- Part 2 --
+    let mut idx = 0;
+    let mut winning_card: Option<&Card> = None;
+    let mut num_scored_cards = 0;
+    while idx < called_numbers.len() && num_scored_cards < num_cards {
+        for card_idx in 0..num_cards {
+            if num_scored_cards < num_cards {
+                winning_card = match mark(&mut cards[card_idx], called_numbers[idx]) {
+                    Some((row, col)) => {
+                        match check(&mut cards[card_idx], (row, col)) {
+                            true => {
+                                match cards[card_idx].has_won {
+                                    true => None,
+                                    false => {
+                                        num_scored_cards += 1;
+                                        cards[card_idx].has_won = true;
+                                        Some(&mut cards[card_idx])
+                                    }
+                                }
+                            },
+                            false => None,
+                        }
+                    },
+                    None => None,
+                }
+            } else {
+                break;
+            }
+        }
+        idx += 1;
+    }
+    println!("last winning card score = {}", winning_card.unwrap().get_score() * called_numbers[idx - 1] as i32);
 }
 
 fn mark(card: &mut Card, val: i32) -> Option<(usize, usize)> {

@@ -70,9 +70,7 @@ fn main() {
                 winning_card = match mark(&mut cards[card_idx], called_numbers[idx]) {
                     Some((row, col)) => {
                         match check(&mut cards[card_idx], (row, col)) {
-                            true => {
-                                Some(&cards[card_idx])
-                            },
+                            true => Some(&cards[card_idx]),
                             false => None,
                         }
                     },

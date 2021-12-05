@@ -73,9 +73,9 @@ fn main() {
         .fold(HashMap::<Point, i32>::new(), |mut freqs, points| {
             points.into_iter()
                 .for_each(|point| {
-                    match &mut freqs.contains_key(&point) {
+                    match freqs.contains_key(&point) {
                         true => {
-                            let current_frequency = freqs.get(&point).unwrap();
+                            let &current_frequency = freqs.get(&point).unwrap();
                             freqs.insert(point, current_frequency + 1);
                         }
                         false => {

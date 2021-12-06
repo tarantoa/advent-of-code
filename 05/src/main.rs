@@ -1,8 +1,9 @@
 use std::collections::HashMap;
+use std::str::FromStr;
+
 use itertools::Itertools;
 use lazy_static::lazy_static;
 use regex::Regex;
-use std::str::FromStr;
 
 #[derive(Debug, PartialEq, Eq, Hash)]
 struct Point {
@@ -10,7 +11,7 @@ struct Point {
     y: i32,
 }
 
-#[derive(Debug, PartialEq, Eq)]
+#[derive(Debug)]
 struct Line {
     p: Point,
     q: Point,
@@ -31,6 +32,24 @@ impl Line {
 
             (min..max+1).map(|x_val| Point { x: x_val, y: self.p.y })
                     .for_each(|point| points.push(point));
+        } else {
+            let x_direction = match self.p.x > self.q.x {
+                true => -1,
+                false => 1,
+            };
+            let y_direction = match self.p.y > self.q.y {
+                true => -1,
+                false => 1,
+            };
+
+            let mut x = self.p.x;
+            let mut y = self.p.y;
+            while x != self.q.x && y != self.q.y {
+                points.push(Point { x, y });
+                if x != self.q.x { x += x_direction; }
+                if y != self.q.y { y += y_direction; }
+            }
+            points.push(Point { x, y });
         }
 
         points
@@ -81,10 +100,36 @@ fn main() {
                         false => {
                             freqs.insert(point, 1);
                         }
-                    };
+                    }
                 });
 
-                freqs
+            freqs
+        });
+
+    let num_intersections = point_frequency.keys()
+        .filter(|key| point_frequency.get(key).unwrap() > &1)
+        .count();
+
+    println!("there are {} intersections", num_intersections);
+
+    // -- Part 2 --
+    let point_frequency = line_segments.iter()
+        .map(|seg| seg.to_points())
+        .fold(HashMap::<Point, i32>::new(), |mut freqs, points| {
+            points.into_iter()
+                .for_each(|point| {
+                    match freqs.contains_key(&point) {
+                        true => {
+                            let &current_frequency = freqs.get(&point).unwrap();
+                            freqs.insert(point, current_frequency + 1);
+                        }
+                        false => {
+                            freqs.insert(point, 1);
+                        }
+                    }
+                });
+
+            freqs
         });
 
     let num_intersections = point_frequency.keys()

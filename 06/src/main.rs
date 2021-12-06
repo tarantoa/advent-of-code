@@ -30,9 +30,9 @@ fn model_lifecycle(mut initial_state: Vec<i64>, days_remaining: usize) -> Vec<i6
         let mut current_state: Vec::<i64> = vec![0; 9];
         let new_fish = initial_state[0] as i64;
         for stage in 0..initial_state.len() - 1 {
-            current_state[stage] = initial_state[stage + 1] as i64;
+            current_state[stage] = initial_state[stage + 1];
         }
-        current_state[initial_state.len() - 1] = new_fish as i64;
+        current_state[initial_state.len() - 1] = new_fish;
         current_state[6] += new_fish;
         initial_state = current_state;
     }

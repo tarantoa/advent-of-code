@@ -10,4 +10,4 @@ Solutions for 2021 Advent of Code. Done in Rust.
 | [Day 2: Binary DIagnostic](https://adventofcode.com/2021/day/3)| 🌟 | 🌟 |
 | [Day 4: Giant Squid](https://adventofcode.com/2021/day/4)| 🌟 | 🌟 |
 | [Day 5: Hydrothermal Vents](https://adventofcode.com/2021/day/5)| 🌟 | 🌟 |
-| [Day 6: Lanternfish](https://adventofcode.com/2021/day/6)| | |
+| [Day 6: Lanternfish](https://adventofcode.com/2021/day/6)| 🌟 | 🌟 |

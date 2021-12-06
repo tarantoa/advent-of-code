@@ -33,11 +33,11 @@ impl Line {
             (min..max+1).map(|x_val| Point { x: x_val, y: self.p.y })
                     .for_each(|point| points.push(point));
         } else {
-            let x_direction = match self.p.x > self.q.x {
+            let dx = match self.p.x > self.q.x {
                 true => -1,
                 false => 1,
             };
-            let y_direction = match self.p.y > self.q.y {
+            let dy = match self.p.y > self.q.y {
                 true => -1,
                 false => 1,
             };
@@ -46,8 +46,8 @@ impl Line {
             let mut y = self.p.y;
             while x != self.q.x && y != self.q.y {
                 points.push(Point { x, y });
-                if x != self.q.x { x += x_direction; }
-                if y != self.q.y { y += y_direction; }
+                if x != self.q.x { x += dx; }
+                if y != self.q.y { y += dy; }
             }
             points.push(Point { x, y });
         }

@@ -5,9 +5,9 @@ fn main() {
         .expect("Failed to open data file");
 
     let initial_state = contents.trim().split(',')
+        .map(|fish_raw| usize::from_str(fish_raw).unwrap())
         .fold(vec![0; 9], |mut state, fish| {
-            let idx = usize::from_str(fish).unwrap();
-            state[idx] += 1;
+            state[fish] += 1;
             state
         });
 

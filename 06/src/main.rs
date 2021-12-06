@@ -19,7 +19,7 @@ fn main() {
 
     // -- Part 2 --
     let num_days = 256;
-    let end_state = model_lifecycle(initial_state.clone(), num_days)
+    let end_state = model_lifecycle(initial_state, num_days)
         .into_iter()
         .fold(0, |sum, cur| sum + cur);
     println!("{} lanternfish after {} days", end_state, num_days);

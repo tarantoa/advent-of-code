@@ -4,11 +4,12 @@ fn main() {
     let contents = std::fs::read_to_string("../data/day_06.txt")
         .expect("Failed to open data file");
 
-    let mut initial_state = vec![0; 9];
-    contents.trim().split(',').for_each(|val| {
-        let idx = usize::from_str(val).unwrap();
-        initial_state[idx] += 1;
-    });
+    let initial_state = contents.trim().split(',')
+        .fold(vec![0; 9], |mut state, fish| {
+            let idx = usize::from_str(fish).unwrap();
+            state[idx] += 1;
+            state
+        });
 
     // -- Part 1 --
     let num_days = 80;

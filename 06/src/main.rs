@@ -10,21 +10,19 @@ fn main() {
         initial_state[idx] += 1;
     });
 
-    println!("{:?}", initial_state);
-
     // -- Part 1 --
-    let end_state = model_lifecycle(initial_state.clone(), 80)
+    let num_days = 80;
+    let end_state = model_lifecycle(initial_state.clone(), num_days)
         .into_iter()
         .fold(0, |sum, cur| sum + cur);
-
-    println!("{} lanternfish after 80 days", end_state);
+    println!("{} lanternfish after {} days", end_state, num_days);
 
     // -- Part 2 --
-    let end_state = model_lifecycle(initial_state.clone(), 256)
+    let num_days = 256;
+    let end_state = model_lifecycle(initial_state.clone(), num_days)
         .into_iter()
         .fold(0, |sum, cur| sum + cur);
-
-    println!("{}", end_state);
+    println!("{} lanternfish after {} days", end_state, num_days);
 }
 
 fn model_lifecycle(mut initial_state: Vec<i64>, days_remaining: usize) -> Vec<i64> {

@@ -19,4 +19,12 @@ fn main() {
         .fold(0, |fuel_cost, curr| fuel_cost + (median - curr).abs());
     println!("total fuel cost for aligning crabs = {}", total_fuel);
 
+    // -- Part 2 --
+    let mean: i32 = crab_positions.iter().sum::<i32>() / crab_positions.len() as i32;
+    let total_fuel = crab_positions.into_iter()
+        .fold(0, |fuel_cost, curr| {
+            let n = (curr - mean).abs();
+            fuel_cost + (n * (n + 1) / 2)
+        });
+    println!("total fuel for weighted movement = {}", total_fuel);
 }

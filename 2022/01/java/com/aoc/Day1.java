@@ -14,18 +14,18 @@ public class Day1 {
   public static List<Elf> readElvesFromFile() {
     List<Elf> elves = new ArrayList<>();
     try (BufferedReader br = new BufferedReader(new FileReader(DATA_FILEPATH))) {
-      List<Long> food = new ArrayList<>();
+      Elf.ElfBuilder builder = Elf.newBuilder();
       String line;
       while ((line = br.readLine()) != null)  {
         if (line.isEmpty()) {
-          elves.add(Elf.newBuilder().withFood(food).build());
-          food = new ArrayList<>();
+          elves.add(builder.build());
+          builder = Elf.newBuilder();
         } else {
-          food.add(Long.parseLong(line));
+          builder.addFoodItem(Long.parseLong(line));
         }
       }
       br.close();
-      elves.add(Elf.newBuilder().withFood(food).build());
+      elves.add(builder.build());
     } catch (Exception e) {
       e.printStackTrace();
     }

@@ -51,6 +51,8 @@ public class Day2 {
     }
 
     public static Hand decode2(final Hand other, final String code) {
+      if (other == null) throw new IllegalArgumentException("other cannot be null");
+      if (code == null || code.isEmpty()) throw new IllegalArgumentException("code cannot be blank.");
       if (code.equals("X")) return fromString(other.beats);
       if (code.equals("Y")) return other;
       if (code.equals("Z")) return fromString(other.losesTo);

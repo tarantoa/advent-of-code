@@ -83,13 +83,14 @@ public class Day2 {
         resultPart1.combine(playHands(elfHand1, elfHand2));
         resultPart2.combine(playHands(elfHand1, elfHand2Part2));
       }
+      br.close();
     } catch (Exception e) {
       e.printStackTrace();
     }
     System.out.printf(
       "Scores { Player1: %d, Player2: %d }\n", resultPart1.playerPoints1, resultPart1.playerPoints2); // Part 1
     System.out.printf(
-      "Scores { Player1: %d, Player2: %d }\n", resultPart2.playerPoints2, resultPart2.playerPoints2); // Part 2
+      "Scores { Player1: %d, Player2: %d }\n", resultPart2.playerPoints1, resultPart2.playerPoints2); // Part 2
   }
 
   private static final class GameResult {

@@ -30,11 +30,11 @@ public class Day2 {
       this.losesTo = losesTo;
     }
 
-    public boolean doesBeat(final Hand other) {
+    private boolean doesBeat(final Hand other) {
       return other.name.equals(beats);
     }
 
-    public static Hand decode(final String code) {
+    private static Hand decode(final String code) {
       if (code == null || code.isEmpty()) throw new IllegalArgumentException("code cannot be blank.");
       if (code.equals("A") || code.equals("X")) return Rock;
       if (code.equals("B") || code.equals("Y")) return Paper;
@@ -42,7 +42,7 @@ public class Day2 {
       throw new IllegalArgumentException("invalid hand code. { " + code + " }");
     }
 
-    public static Hand fromString(final String name) {
+    private static Hand fromString(final String name) {
       if (name == null || name.isEmpty()) throw new IllegalArgumentException("name cannot be blank.");
       if (name.equals(ROCK)) return Rock;
       if (name.equals(PAPER)) return Paper;
@@ -50,7 +50,7 @@ public class Day2 {
       throw new IllegalArgumentException("invalid hand name. { " + name + " }");
     }
 
-    public static Hand decode2(final Hand other, final String code) {
+    private static Hand decode2(final Hand other, final String code) {
       if (other == null) throw new IllegalArgumentException("other cannot be null");
       if (code == null || code.isEmpty()) throw new IllegalArgumentException("code cannot be blank.");
       if (code.equals("X")) return fromString(other.beats);

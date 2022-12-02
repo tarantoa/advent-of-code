@@ -104,8 +104,8 @@ public class Day2 {
     }
 
     private void combine(final GameResult other) {
-      this.playerPoints1 += other.playerPoints1;
-      this.playerPoints2 += other.playerPoints2;
+      playerPoints1 += other.playerPoints1;
+      playerPoints2 += other.playerPoints2;
     }
   }
 }

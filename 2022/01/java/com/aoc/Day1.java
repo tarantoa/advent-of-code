@@ -11,35 +11,36 @@ public class Day1 {
   private static final String TEST_DATA_FILEPATH = "../../data/day_01_test.txt";
   private static final String DATA_FILEPATH = "../../data/day_01.txt";
 
-  public static List<Elf> readElvesFromFile() {
-    List<Elf> elves = new ArrayList<>();
+  public static List<Long> readCalorieCountsFromfile() {
+    List<Long> elfCalories = new ArrayList<>();
     try (BufferedReader br = new BufferedReader(new FileReader(DATA_FILEPATH))) {
-      Elf.ElfBuilder builder = Elf.newBuilder();
       String line;
+      Long calorieCount = 0L;
       while ((line = br.readLine()) != null)  {
         if (line.isEmpty()) {
-          elves.add(builder.build());
-          builder = Elf.newBuilder();
+          elfCalories.add(calorieCount);
+          calorieCount = 0L;
         } else {
-          builder.addFoodItem(Long.parseLong(line));
+          calorieCount += Long.parseLong(line);
         }
       }
       br.close();
-      elves.add(builder.build());
+      elfCalories.add(calorieCount);
     } catch (Exception e) {
       e.printStackTrace();
     }
-    return elves;
+    return elfCalories;
   }
 
   public static void main(String[] args) {
-    List<Elf> elves = readElvesFromFile();
-    Collections.sort(elves);
-    System.out.printf("Most calories: %d\n", elves.get(0).getCalories()); // Part 1
-    if (elves.size() < 3) {
-      throw new IllegalStateException("there must be at least three elves.");
+    List<Long> elfCalories = readCalorieCountsFromfile();
+    Collections.sort(elfCalories);
+    Collections.reverse(elfCalories);
+    System.out.printf("Most calories: %d\n", elfCalories.get(0)); // Part 1
+    if (elfCalories.size() < 3) {
+      throw new IllegalStateException("there must be at least three calorie entries.");
     }
     System.out.printf("Calories from top 3 elves: %d\n", 
-      elves.get(0).getCalories() + elves.get(1).getCalories() + elves.get(2).getCalories()); // Part 2
+      elfCalories.get(0) + elfCalories.get(1) + elfCalories.get(2));
   }
 }

@@ -26,7 +26,7 @@ public class Day3 {
             .filter(leftHalf::contains)
             .collect(Collectors.toSet())
             .stream()
-            .reduce("", (intersection, currentChar) -> union + currentChar);
+            .reduce("", (intersection, currentChar) -> intersection + currentChar);
           })
         .map(intersection -> intersection.chars()
           .reduce(0, (sum, currentCharacter) -> {

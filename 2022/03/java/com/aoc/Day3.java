@@ -26,9 +26,9 @@ public class Day3 {
             .filter(leftHalf::contains)
             .collect(Collectors.toSet())
             .stream()
-            .reduce("", (union, currentChar) -> union + currentChar);
+            .reduce("", (intersection, currentChar) -> union + currentChar);
           })
-        .map(union -> union.chars()
+        .map(intersection -> intersection.chars()
           .reduce(0, (sum, currentCharacter) -> {
             if (isLowerCase(currentCharacter)) return sum + (currentCharacter - '`');
             if (isUpperCase(currentCharacter)) return sum + (currentCharacter - '&');

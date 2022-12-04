@@ -8,7 +8,7 @@ import java.util.List;
 
 public class Day1 {
 
-  private static final String TEST_DATA_FILEPATH = "../../data/day_01_test.txt";
+  private static final String TEST_DATA_FILEPATH = "../../testdata/day_01.txt";
   private static final String DATA_FILEPATH = "../../data/day_01.txt";
 
   public static List<Long> readCalorieCountsFromfile() {

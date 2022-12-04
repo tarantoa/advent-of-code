@@ -7,7 +7,7 @@ import java.util.stream.Stream;
 public class Day4 {
 
   private static final String DATA_FILEPATH = "../../data/day_04.txt";
-  private static final String TEST_DATA_FILEPATH = "../../data/day_04_test.txt";
+  private static final String TEST_DATA_FILEPATH = "../../testdata/day_04.txt";
 
   private static Stream<Pair> getAssignmentPairs(final BufferedReader reader) 
       throws FileNotFoundException, IOException {

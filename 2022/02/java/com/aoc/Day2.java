@@ -4,7 +4,7 @@ import java.io.FileReader;
 public class Day2 {
   
   private static final String DATA_FILEPATH = "../../data/day_02.txt";
-  private static final String TEST_DATA_FILEPATH = "../../data/day_02_test.txt";
+  private static final String TEST_DATA_FILEPATH = "../../testdata/day_02.txt";
 
   private static final String ROCK = "rock";
   private static final String PAPER = "paper";

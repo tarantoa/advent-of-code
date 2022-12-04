@@ -7,7 +7,7 @@ public class Day3 {
   private static final String DISABLE_TEST_FLAG = "--notest";
 
   private static final String DATA_FILEPATH = "../../data/day_03.txt";
-  private static final String TEST_DATA_FILEPATH = "../../data/day_03_test.txt";
+  private static final String TEST_DATA_FILEPATH = "../../testdata/day_03.txt";
 
   public static void main(String[] args) {
     String dataDir = TEST_DATA_FILEPATH;

@@ -29,11 +29,7 @@ public class Day3 {
             .reduce("", (intersection, currentChar) -> intersection + currentChar);
           })
         .map(intersection -> intersection.chars()
-          .reduce(0, (sum, currentCharacter) -> {
-            if (isLowerCase(currentCharacter)) return sum + (currentCharacter - '`');
-            if (isUpperCase(currentCharacter)) return sum + (currentCharacter - '&');
-            return sum;
-          }))
+          .reduce(0, (sum, currentCharacter) -> sum + priorityValue(currentCharacter)))
         .reduce(0, (cumSum, currentLineSum) -> cumSum + currentLineSum);
         System.out.printf("Priority Sum: %d\n", prioritySum);
       br.close();
@@ -48,5 +44,11 @@ public class Day3 {
 
   private static final boolean isLowerCase(final int character) {
     return 97 <= character && character <= 122;
+  }
+
+  private static final int priorityValue(int val) {
+    if (isLowerCase(val)) return val - '`';
+    if (isUpperCase(val)) return val - '&';
+    return 0;
   }
 }

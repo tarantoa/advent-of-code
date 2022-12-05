@@ -36,6 +36,7 @@ public class Day4 {
         getAssignmentPairs(reader)
           .filter(pair -> pair.first.encloses(pair.second) || pair.second.encloses(pair.first))
           .count());
+      reader.close();
     } catch (Exception e) {
       e.printStackTrace();
     }
@@ -44,6 +45,7 @@ public class Day4 {
     try (BufferedReader reader = new BufferedReader(new FileReader(dataDir))) {
       System.out.printf("Overlapping intervals: %d\n",
         getAssignmentPairs(reader).filter(pair -> pair.first.contains(pair.second)).count());
+      reader.close();
     } catch (Exception e) {
       e.printStackTrace();
     }

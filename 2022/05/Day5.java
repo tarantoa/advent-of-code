@@ -18,6 +18,14 @@ public class Day5 {
     return 65 <= c && c <= 90;
   }
 
+  private static final void printSupplyStack(List<Stack<Character>> supplies) {
+    System.out.printf("Top boxes: %s\n", 
+      supplies.stream()
+        .filter(supplyStack -> !supplyStack.isEmpty())
+        .map(stack -> Character.toString(stack.peek()))
+        .reduce("", (topBoxes, box) -> topBoxes + box));
+  }
+
   public static void main(String[] args) {
     String dataDir = args.length == 1 && args[0].equals("--notest") ?
       DATA_FILEPATH : TEST_DATA_FILEPATH;
@@ -73,13 +81,5 @@ public class Day5 {
     } catch (Exception e) {
       e.printStackTrace();
     }
-  }
-
-  private static final void printSupplyStack(List<Stack<Character>> supplies) {
-    System.out.printf("Top boxes: %s\n", 
-      supplies.stream()
-        .filter(supplyStack -> !supplyStack.isEmpty())
-        .map(stack -> Character.toString(stack.peek()))
-        .reduce("", (topBoxes, box) -> topBoxes + box));
   }
 }

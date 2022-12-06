@@ -36,8 +36,8 @@ public class Day6 {
   public static void main(String[] args) {
     String filepath = 
       (args.length == 1 && args[0].equals("--notest") ? DATA_DIRECTORY : TEST_DATA_DIRECTORY) + DATA_FILE;
-    printMarkerIndicesForInput(filepath, 4);
-    printMarkerIndicesForInput(filepath, 14);
+    printMarkerIndicesForInput(filepath, 4); // Part 1
+    printMarkerIndicesForInput(filepath, 14); // Part 2
   }
 
 }

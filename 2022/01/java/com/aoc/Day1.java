@@ -29,6 +29,7 @@ public class Day1 {
   public static void main(String[] args) {
     final String filepath = 
       args.length == 1 && args[0].equals("--notest") ? DATA_FILEPATH : TEST_DATA_FILEPATH;
+
     List<Long> calorieTotals = new ArrayList<>();
     try (BufferedReader reader = new BufferedReader(new FileReader(filepath))) {
       calorieTotals = reader.lines()
@@ -41,17 +42,14 @@ public class Day1 {
     } catch (Exception e) {
       e.printStackTrace();
     }
-
     if (calorieTotals.isEmpty()) {
       System.out.println("Result calorie list is empty.");
       return;
     }
-
     Collections.sort(calorieTotals);
     Collections.reverse(calorieTotals);
-
     System.out.printf("Highest calorie count: %d\n", calorieTotals.get(0)); // Part 1
-    System.out.printf("Sum of the highest three calorie counts: %d\n",
+    System.out.printf("Sum of the highest three calorie counts: %d\n", // Part 2
       calorieTotals.get(0) + calorieTotals.get(1) + calorieTotals.get(2));
   }
 }

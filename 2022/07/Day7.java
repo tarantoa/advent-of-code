@@ -77,9 +77,10 @@ public class Day7 {
     toTraverse.push(root);
     while (!toTraverse.isEmpty()) {
       cwd = toTraverse.pop();
-      for (Directory d : cwd.directories) {
-        toTraverse.push(d);
-      }
+
+      cwd.directories
+        .forEach(toTraverse::add);
+
       Long directorySize = cwd.getDirectorySize();
       if (directorySize <= 100000L) {
         fileSizeSum += directorySize;

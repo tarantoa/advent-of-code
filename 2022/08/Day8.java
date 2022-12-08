@@ -80,7 +80,7 @@ public class Day8 {
     final int rows = forest.size();
     final int cols = forest.get(0).size();
 
-    System.out.printf("Number of trees visible: %d\n",
+    System.out.printf("Number of trees visible: %d\n", // Part 1
       IntStream.range(0, rows)
         .mapToObj(treeRow -> IntStream.range(0, cols)
           .filter(tree -> isVisible(treeRow, tree))
@@ -89,7 +89,7 @@ public class Day8 {
         .flatMap(list -> list.stream())
         .filter(isVisible -> isVisible)
         .count());
-    System.out.printf("Highest scenic score: %d\n",
+    System.out.printf("Highest scenic score: %d\n", // Part 2
       IntStream.range(1, rows - 1)
         .flatMap(treeRow -> IntStream.range(1, cols - 1)
           .map(tree -> getScenicScore(treeRow, tree)))

@@ -90,7 +90,7 @@ public class Day7 {
           smallestOverThreshold > directorySize ? directorySize : smallestOverThreshold;
       }
     }
-    System.out.printf("File Size sum: %d\n", fileSizeSum); // Part 1
+    System.out.printf("File Size sum: [%d]\n", fileSizeSum); // Part 1
     System.out.printf("Delete dir: [%d]\n", smallestOverThreshold); // Part 2
   }
 

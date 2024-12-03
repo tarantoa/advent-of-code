@@ -28,5 +28,26 @@ void ReadFileToVectorPair(const std::string& filepath, std::vector<int>& first, 
     }
 }
 
+void ReadFileTo2DVector(const std::string& filepath, std::vector<std::vector<int>>& reports) {
+    if (filepath.empty()) {
+        return;
+    }
+    std::ifstream input_file(filepath);
+    if (!input_file.good()) {
+        std::cout << "Unable to read input file \"" << filepath << "\"." << std::endl;
+    }
+    std::regex numbers("(\\d+)");
+    std::string current_line;
+    while (std::getline(input_file, current_line)) {
+        auto line_numbers_begin = std::sregex_iterator(current_line.begin(), current_line.end(), numbers);
+        auto line_numbers_end = std::sregex_iterator();
+        std::vector<int> report;
+        for (std::sregex_iterator it = line_numbers_begin; it != line_numbers_end; it++) {
+            report.push_back(std::stoi((*it).str()));
+        }
+        reports.push_back(std::move(report));
+    }
+}
+
 }
 }

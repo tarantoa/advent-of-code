@@ -1,4 +1,4 @@
-#include "part_2.h"
+#include "day_1_part_2.h"
 
 #include <cassert>
 #include <iostream>

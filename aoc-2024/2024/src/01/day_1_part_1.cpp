@@ -1,4 +1,4 @@
-#include "part_1.h"
+#include "day_1_part_1.h"
 
 #include <algorithm>
 #include <iostream>

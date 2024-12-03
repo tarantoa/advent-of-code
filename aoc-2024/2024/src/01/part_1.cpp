@@ -1,10 +1,13 @@
+#include "part_1.h"
+
 #include <algorithm>
 #include <iostream>
 #include <vector>
 
 #include "file_utils.h"
 
-using namespace advent_of_code;
+namespace advent_of_code {
+namespace Day1_Part1 {
 
 int main() {
     std::vector<int> first;
@@ -28,7 +31,7 @@ int main() {
     std::sort(first.begin(), first.end());
     std::sort(second.begin(), second.end());
 
-    // Work for Part A:
+    // Work for Part 1:
     // We simply need to sum the differences between individual vector items
     // in both arrays.
     long total_distance = 0;
@@ -45,4 +48,7 @@ int main() {
     std::cout << "Total distance between vectors: " << total_distance << std::endl;
 
     return 0;
+}
+
+}
 }

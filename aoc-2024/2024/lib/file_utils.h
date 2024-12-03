@@ -1,5 +1,6 @@
+#pragma once
+
 #include <string>
-#include <utility>
 #include <vector>
 
 namespace advent_of_code {

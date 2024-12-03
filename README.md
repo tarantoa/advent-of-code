@@ -1,6 +1,6 @@
 # Advent of Code
 
-Solutions for 2022 Advent of Code. Done in Java.
+Personal solutions for [Advent of Code](https://adventofcode.com). Done in various languages across years.
 
 ## Progress
 | Year | Day  | Part One | Part Two | 

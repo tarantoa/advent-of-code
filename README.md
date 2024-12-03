@@ -17,3 +17,4 @@ Personal solutions for [Advent of Code](https://adventofcode.com). Done in vario
 | 2022 | [Day 10: Cathode-Ray Tube](https://adventofcode.com/2022/day/10)| 🌟 |
 |---|---|
 | 2024 | [Day 1: Historian Hysteria](https://adventofcode.com/2024/day/1)| 🌟 | 🌟 |
+| 2024 | [Day 2: Red-Nosed Reports](https://adventofcode.com/2024/day/2)| 🌟 |

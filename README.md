@@ -18,3 +18,4 @@ Personal solutions for [Advent of Code](https://adventofcode.com). Done in vario
 |---|---|
 | 2024 | [Day 1: Historian Hysteria](https://adventofcode.com/2024/day/1)| 🌟 | 🌟 |
 | 2024 | [Day 2: Red-Nosed Reports](https://adventofcode.com/2024/day/2)| 🌟 |
+| 2024 | [Day 3: Mull It Over](https://adventofcode.com/2024/day/3)| 🌟 |

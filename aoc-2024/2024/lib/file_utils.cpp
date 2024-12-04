@@ -49,5 +49,19 @@ void ReadFileTo2DVector(const std::string& filepath, std::vector<std::vector<int
     }
 }
 
+void ReadFileToStringVector(const std::string& filepath, std::vector<std::string>& lines) {
+    if (filepath.empty()) {
+        return;
+    }
+    std::ifstream input_file(filepath);
+    if (!input_file.good()) {
+        std::cout << "Unable to read input file \"" << filepath << "\"." << std::endl;
+    }
+    std::string current_line;
+    while (std::getline(input_file, current_line)) {
+        lines.push_back(current_line);
+    }
+}
+
 }
 }
